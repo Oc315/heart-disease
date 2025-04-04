@@ -1,0 +1,28 @@
+---
+title: "Heart Disease Risk Analysis"
+author: "Oceanus Zhang"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(gt)
+library(here)
+```
+
+### Summary Table
+```{r}
+# Load summary table
+summary_table <- readRDS(here("heart+disease", "output", "summary_table.rds"))
+
+summary_table %>%
+  gt() %>%
+  tab_header(title = "Summary of Heart Disease Dataset")
+```
+
+### Age Distribution Plot
+```{r}
+knitr::include_graphics(here("heart+disease", "output", "age_histogram.png"))
+```
