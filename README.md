@@ -8,8 +8,8 @@ model development, and evaluation to predict the presence of heart disease.
 - `data/`: Contains the raw data file (`heart.csv`)
 - `code/`: Contains R scripts for each step
   - `01_preprocess.R`: Cleans and prepares the data
-  - `02_model.R`: Trains classification model
-  - `03_evaluation.R`: Evaluates model with metrics and plots
+  - `02_summary_table.R`: Trains classification model
+  - `03_plot_distribution.R`: Evaluates model with metrics and plots
 - `output/`: Contains generated outputs (plots, .rds files)
 - `report/`: Contains the final `report.Rmd` and HTML output
 - `Makefile`: Defines the pipeline to run everything with one command
@@ -31,6 +31,3 @@ Train the model
 Evaluate performance
 
 Render the final HTML report at report/report.html
-
-Author
-Oceanus Zhang
