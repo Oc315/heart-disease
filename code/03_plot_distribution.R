@@ -4,7 +4,7 @@ library(tidyverse)
 library(here)
 
 # Load cleaned data
-heart_data <- readRDS(here("heart+disease", "output", "heart_clean.rds"))
+heart_data <- readRDS(here("output", "heart_clean.rds"))
 
 # Histogram
 p <- ggplot(heart_data, aes(x = Age, fill = Target)) +
@@ -16,4 +16,4 @@ p <- ggplot(heart_data, aes(x = Age, fill = Target)) +
   theme_minimal()
 
 # Save plot
-ggsave(here("heart+disease", "output", "age_histogram.png"), plot = p, width = 8, height = 5)
+ggsave(here("output", "age_histogram.png"), plot = p, width = 8, height = 5)

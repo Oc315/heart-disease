@@ -4,7 +4,7 @@ library(tidyverse)
 library(here)
 
 # Load cleaned data
-heart_data <- readRDS(here("heart+disease", "output", "heart_clean.rds"))
+heart_data <- readRDS(here("output", "heart_clean.rds"))
 
 # Summary table
 summary_table <- heart_data %>%
@@ -18,4 +18,4 @@ summary_table <- heart_data %>%
   )
 
 # Save to RDS
-saveRDS(summary_table, here("heart+disease", "output", "summary_table.rds"))
+saveRDS(summary_table, here("output", "summary_table.rds"))

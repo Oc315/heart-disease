@@ -15,7 +15,7 @@ library(here)
 ### Summary Table
 ```{r}
 # Load summary table
-summary_table <- readRDS(here("heart+disease", "output", "summary_table.rds"))
+summary_table <- readRDS(here("output", "summary_table.rds"))
 
 summary_table %>%
   gt() %>%
@@ -24,5 +24,5 @@ summary_table %>%
 
 ### Age Distribution Plot
 ```{r}
-knitr::include_graphics(here("heart+disease", "output", "age_histogram.png"))
+knitr::include_graphics(here("output", "age_histogram.png"))
 ```

@@ -4,7 +4,7 @@ library(tidyverse)
 library(here)
 
 # Load data
-data_path <- here("heart+disease", "data", "processed.cleveland.data")
+data_path <- here("data", "processed.cleveland.data")
 heart_data <- read.table(data_path, sep = ",", header = FALSE, na.strings = "?")
 
 # Assign column names
@@ -27,4 +27,4 @@ heart_data <- heart_data %>%
   mutate(across(where(is.numeric), ~ replace_na(., median(., na.rm = TRUE))))
 
 # Save to RDS
-saveRDS(heart_data, here("heart+disease", "output", "heart_clean.rds"))
+saveRDS(heart_data, here("output", "heart_clean.rds"))
