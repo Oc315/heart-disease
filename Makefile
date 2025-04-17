@@ -23,4 +23,8 @@ report.html: report/report.Rmd output/summary_table.rds output/age_histogram.png
 clean:
 	rm -f output/*.rds output/*.png report.html
 
+install:
+	Rscript -e "renv::restore(prompt = FALSE)"
+
+
 
