@@ -1,7 +1,5 @@
-# Makefile
-
 # Final output
-all: report.html
+all: report/report.html
 
 # Build cleaned dataset
 output/heart_clean.rds: code/01_preprocess.R data/processed.cleveland.data
@@ -16,15 +14,24 @@ output/age_histogram.png: code/03_plot_distribution.R output/heart_clean.rds
 	Rscript code/03_plot_distribution.R
 
 # Final report
-report.html: report/report.Rmd output/summary_table.rds output/age_histogram.png
-	Rscript -e "rmarkdown::render('report/report.Rmd')"
+report/report.html: report/report.Rmd output/summary_table.rds output/age_histogram.png
+	Rscript -e "rmarkdown::render('report/report.Rmd', output_file = 'report.html', output_dir = 'report')"
 
 # Clean outputs
 clean:
-	rm -f output/*.rds output/*.png report.html
+	rm -f output/*.rds output/*.png report/*.html
 
-install:
-	Rscript -e "renv::restore(prompt = FALSE)"
+# Build image
+docker_build:
+	docker build -t heart_disease_image .
+
+# Run container and generate report
+docker_run:
+	docker run --rm -v "$(PWD)/report:/home/rstudio/project/report" heart_disease_image
+
+# Windows version
+docker_run:
+	docker run --rm -v "$(pwd)/report:/home/rstudio/project/report" heart_disease_image
 
 
 

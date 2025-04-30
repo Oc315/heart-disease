@@ -21,6 +21,18 @@ The goal is to process the data, summarize key trends, visualize distributions, 
 
 ---
 
+## 🔧 Build Docker Image
+
+```bash
+docker build -t heart_disease_image .
+
+## 🔄 Restoring the Environment
+
+To install all R packages used in this project, run:
+
+```bash
+make install
+
 ## 📊 How to Generate the Final Report
 
 Open a terminal inside the project folder and run:
@@ -28,3 +40,12 @@ Open a terminal inside the project folder and run:
 ```bash
 make
 
+## 🔨 How to Build the Docker Image
+bash
+
+docker build -t oc315/heart-disease-image .
+
+## ▶️ How to Run and Generate the Report
+bash
+
+docker run --rm -v "$(pwd)/report:/home/rstudio/project/report" oc315/heart-disease-image
