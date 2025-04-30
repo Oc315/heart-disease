@@ -1,51 +1,51 @@
-# 🫀 Heart Disease Prediction Project
+# Heart Disease Analysis Project
 
-This project analyzes the **Heart Disease dataset** from the **UCI Machine Learning Repository**.  
-The goal is to process the data, summarize key trends, visualize distributions, and eventually build predictive models for heart disease classification.
-
----
-
-## 📁 Project Structure
-
-- `data/`: Contains the raw dataset (`processed.cleveland.data`)
-- `code/`: Contains all analysis scripts:
-  - `01_preprocess.R`: Loads, cleans, and preprocesses the dataset; saves output as `output/heart_clean.rds`
-  - `02_summary_table.R`: Creates a summary table with key descriptive statistics; output saved as `output/summary_table.rds`
-  - `03_plot_distribution.R`: Generates a histogram of age by heart disease status; output saved as `output/age_dist.png`
-- `output/`: Contains all generated files (.rds, .png) used in the report
-- `report/`: Contains the main R Markdown report file and final HTML report
-  - `report.Rmd`: Pulls from output files to generate the final formatted report
-- `Makefile`: Automates the full analysis pipeline from data cleaning to report generation
-- `.gitignore`: Ignores unnecessary or auto-generated files
-- `README.md`: You're reading it!
+This repository contains an automated and reproducible analysis pipeline for exploring the Cleveland heart disease dataset. The report is rendered using R Markdown and includes data preprocessing, summary statistics, and visualizations.
 
 ---
 
-## 🔧 Build Docker Image
+## 📦 Project Structure
+
+. ├── code/ # R scripts for each step of the pipeline ├── data/ # Raw data (processed.cleveland.data) ├── output/ # Generated intermediate files ├── report/ # Compiled final report (report.html) ├── renv/ # R package management files ├── Dockerfile # Docker image for reproducible analysis ├── Makefile # Automation rules ├── renv.lock # Package versions for reproducibility └── README.md # This file
+
+
+---
+
+## 🐳 Build Docker Image
+
+To build the Docker image, run the following command from the root of the project directory:
 
 ```bash
-docker build -t heart_disease_image .
-
-## 🔄 Restoring the Environment
-
-To install all R packages used in this project, run:
-
-```bash
-make install
-
-## 📊 How to Generate the Final Report
-
-Open a terminal inside the project folder and run:
-
-```bash
-make
-
-## 🔨 How to Build the Docker Image
-bash
-
 docker build -t oc315/heart-disease-image .
 
-## ▶️ How to Run and Generate the Report
-bash
+🏃 Run Docker Container to Generate Report
 
-docker run --rm -v "$(pwd)/report:/home/rstudio/project/report" oc315/heart-disease-image
+Make sure you have an empty folder named report/ in the root of the repository. Then run:
+
+bash
+make docker_run
+
+This command:
+
+Launches a container from the oc315/heart-disease-image image
+
+Mounts the local report/ folder to /home/rstudio/project/report in the container
+
+Runs the make all target inside the container to generate the final report
+
+When finished, the output report will appear in the local report/ folder as:
+
+bash
+report/report.html
+
+⚠️ Notes for Windows Users
+If you're using Git Bash on Windows, you may need to modify the path in the Makefile's docker_run rule:
+
+make
+
+docker run --rm -v "/$(pwd)/report:/home/rstudio/project/report" oc315/heart-disease-image make all
+
+🌐 DockerHub Link
+You can find the public Docker image here:
+
+👉 https://hub.docker.com/r/oc315/heart-disease-image

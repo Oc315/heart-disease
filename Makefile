@@ -29,9 +29,4 @@ docker_build:
 docker_run:
 	docker run --rm -v "$(PWD)/report:/home/rstudio/project/report" heart_disease_image
 
-# Windows version
-docker_run:
-	docker run --rm -v "$(pwd)/report:/home/rstudio/project/report" heart_disease_image
-
-
 
